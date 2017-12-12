@@ -1,0 +1,45 @@
+---
+ansible:
+  playbook: tests/playbook.yml
+driver:
+  name: docker
+verifier:
+  name: testinfra
+docker:
+  containers:
+#    - name: etcd-node01
+#      ansible_groups:
+#        - cluster
+#      image: jpetazzo/dind
+#      image_version: latest
+#      privileged: True
+#    - name: etcd-node02
+#      ansible_groups:
+#        - cluster
+#      image: jpetazzo/dind
+#      image_version: latest
+#      privileged: True
+#    - name: etcd-node03
+#      ansible_groups:
+#        - cluster
+#      image: jpetazzo/dind
+#      image_version: latest
+#      privileged: True
+    - name: xenial
+#      ansible_groups:
+#        - xenial
+      image: solita/ubuntu-systemd
+      image_version: 16.04
+      privileged: true
+    - name: debian-jessie
+#      ansible_groups:
+#        - debian
+      image: jrei/systemd-debian
+      image_version: 8
+      privileged: true
+    - name: centos
+#      ansible_groups:
+#        - centos
+      image: centos/systemd
+      image_version: latest
+      privileged: true

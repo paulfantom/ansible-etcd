@@ -1,0 +1,9 @@
+- name: Set etcd address
+  set_fact:
+    etcd_address: "{{ hostvars[inventory_hostname]['ansible_' + etcd_interface]['ipv4']['address'] }}"
+  when: etcd_address is undefined
+
+- name: Check for token
+  fail:
+    msg: "Please set `etcd_token` variable for proper cluster bootstraping"
+  when: etcd_token == ""

@@ -1,0 +1,10 @@
+---
+- include: preflight.yml
+
+- include: install.yml
+
+- name: Ensure etcd service is started and enabled
+  systemd:
+    name: etcd
+    state: started
+    enabled: yes

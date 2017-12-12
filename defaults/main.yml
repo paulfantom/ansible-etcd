@@ -1,0 +1,10 @@
+---
+etcd_hosts_group: etcd
+
+etcd_version: "3.2.11"
+
+etcd_interface: "{{ ansible_default_ipv4.interface }}"
+etcd_port: 2379
+etcd_peer_port: 2380
+
+etcd_token: ""
