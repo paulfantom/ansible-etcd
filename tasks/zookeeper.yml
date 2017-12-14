@@ -1,0 +1,30 @@
+---
+- name: Download fluentd_exporter from github and compile it locally
+  become: no
+  shell: "export GOPATH=/tmp/zetcd; go get github.com/coreos/zetcd"
+  args:
+    creates: /tmp/zetcd
+  run_once: yes
+  delegate_to: localhost
+
+- name: install prometheus exporter
+  copy:
+    src: /tmp/zetcd/bin/zetcd
+    dest: /opt/zetcd
+    mode: 0755
+  notify: restart zetcd
+
+- name: create zetcd systemd service unit
+  template:
+    src: zetcd.service.j2
+    dest: /etc/systemd/system/zetcd.service
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart zetcd
+
+- name: Ensure zetcd service is started and enabled
+  systemd:
+    name: zetcd
+    state: started
+    enabled: yes

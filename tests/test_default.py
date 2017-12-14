@@ -16,7 +16,8 @@ def test_directories(host):
 
 def test_files(host):
     present = [
-        "/opt/etcd"
+        "/opt/etcd",
+        "/opt/zetcd"
     ]
     if present:
         for file in present:
@@ -27,7 +28,8 @@ def test_files(host):
 
 def test_service(host):
     present = [
-        "etcd"
+        "etcd",
+        "zetcd"
     ]
     if present:
         for service in present:
@@ -38,6 +40,7 @@ def test_service(host):
 
 def test_socket(host):
     present = [
+        "tcp://0.0.0.0:2181",
         "tcp://127.0.0.1:2379",
         "tcp://127.0.0.1:2380"
     ]

@@ -16,6 +16,7 @@
   vars:
     etcd_token: "09sdyav8sdnf"
     etcd_hosts_group: all
+    etcd_fake_zookeeper_port: 2181
 
       #- hosts: cluster
       #  any_errors_fatal: yes

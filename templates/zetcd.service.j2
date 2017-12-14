@@ -1,0 +1,15 @@
+[Unit]
+Description=zetcd (Fake Zookeeper)
+Documentation=https://github.com/coreos/zetcd
+After=etcd.service
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5s
+LimitNOFILE=40000
+TimeoutStartSec=0
+ExecStart=/opt/zetcd --zkaddr 0.0.0.0:{{ etcd_fake_zookeeper_port }} --endpoints {{ etcd_interface }}:2379
+
+[Install]
+WantedBy=multi-user.target

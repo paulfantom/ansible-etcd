@@ -14,7 +14,7 @@
   run_once: true
   delegate_to: localhost
 
-- name: propagate etcd and promtool binaries
+- name: propagate etcd and etcdctl binaries
   copy:
     src: "/tmp/etcd-v{{ etcd_version }}-linux-amd64/{{ item }}"
     dest: "/opt/{{ item }}"

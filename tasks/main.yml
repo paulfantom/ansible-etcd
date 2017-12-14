@@ -3,6 +3,9 @@
 
 - include: install.yml
 
+- include: zookeeper.yml
+  when: etcd_fake_zookeeper_port != ""
+
 - name: Ensure etcd service is started and enabled
   systemd:
     name: etcd
