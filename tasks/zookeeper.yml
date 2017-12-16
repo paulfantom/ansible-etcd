@@ -1,7 +1,7 @@
 ---
 - name: Download fluentd_exporter from github and compile it locally
   become: no
-  shell: "export GOPATH=/tmp/zetcd; go get github.com/coreos/zetcd"
+  shell: "export GOPATH=/tmp/zetcd; go get github.com/coreos/zetcd/cmd/zetcd"
   args:
     creates: /tmp/zetcd
   run_once: yes
